@@ -4,7 +4,6 @@ zkp-auth is a lightweight, modular authentication system based on **Zero Knowled
 
 It is designed for developers who require secure, simple, and easily integratable authentication mechanisms in Java-based applications.
 
-
 ## TODO
 
 - [ ] Integrate a real database for persistent user and key storage.
@@ -20,7 +19,8 @@ It is designed for developers who require secure, simple, and easily integratabl
 
 - [Overview](#overview)
 - [Architecture](#architecture)
-- [Project Structure](#project-structure)
+- [Current Project Structure](#current-project-structure)
+- [Final Expected Structure](#final-expected-structure)
 - [Technology Stack](#technology-stack)
 - [How It Works](#how-it-works)
   - [Signup Flow](#signup-flow)
@@ -48,38 +48,51 @@ The system uses a simple challenge-response mechanism for login, ensuring secure
 - Challenge generation and lifecycle management
 - Signature verification against stored public keys
 
-## Project Structure
+## Current Project Structure
+
+At present, both client and server components are placed within the same Maven module:
 
 ```
 /zkp-auth/
-├── client/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   ├── com/zkp/client/
-│   │   │   │   │   ├── KeyManager.java
-│   │   │   │   │   ├── AuthClient.java
-│   │   │   │   │   ├── CryptoUtils.java
-│   │   │   │   │   ├── NetworkClient.java
-│   │   │   │   │   └── Exceptions.java (optional)
-│   │   └── test/
-│   │       └── java/com/zkp/client/
-├── server/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   ├── com/zkp/server/
-│   │   │   │   │   ├── AuthServer.java
-│   │   │   │   │   ├── UserManager.java
-│   │   │   │   │   ├── ChallengeManager.java
-│   │   │   │   │   ├── CryptoUtils.java
-│   │   │   │   │   └── Exceptions.java (optional)
-│   │   └── test/
-│   │       └── java/com/zkp/server/
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── com/zkp/
+│   │           ├── client/
+│   │           │   ├── KeyManager.java
+│   │           │   ├── AuthClient.java
+│   │           │   ├── CryptoUtils.java
+│   │           │   ├── NetworkClient.java
+│   │           │   └── Exceptions.java (optional)
+│   │           └── server/
+│   │               ├── AuthServer.java
+│   │               ├── UserManager.java
+│   │               ├── ChallengeManager.java
+│   │               ├── CryptoUtils.java
+│   │               └── Exceptions.java (optional)
 ├── README.md
 ├── LICENSE
 └── build.gradle (or pom.xml if Maven)
 ```
+
+## Final Expected Structure
+
+The project will eventually be separated into two independent Maven modules:
+
+```
+/zkp-auth/
+├── client/
+│   ├── src/main/java/com/zkp/client/
+│   ├── pom.xml
+├── server/
+│   ├── src/main/java/com/zkp/server/
+│   ├── pom.xml
+├── README.md
+├── LICENSE
+└── pom.xml (parent Maven POM managing modules)
+```
+
+This separation will allow for independent building, publishing, and usage of the client and server libraries.
 
 ## Technology Stack
 
@@ -145,8 +158,6 @@ mvn clean install
 
 3. Import the modules into your Java project.
 
-
-
 ## Usage Example
 
 **Client Side Example:**
@@ -171,8 +182,6 @@ AuthServer authServer = new AuthServer(userManager, challengeManager);
 // Call authServer.handleRequest(parsedRequestMap)
 ```
 
-
 ## License
 
 This project is licensed under the MIT License.
-```
