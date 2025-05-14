@@ -4,6 +4,18 @@ zkp-auth is a lightweight, modular authentication system based on **Zero Knowled
 
 It is designed for developers who require secure, simple, and easily integratable authentication mechanisms in Java-based applications.
 
+
+## TODO
+
+- [ ] Integrate a real database for persistent user and key storage.
+- [ ] Persist challenges across server restarts.
+- [ ] Implement key rotation and revocation mechanisms.
+- [ ] Improve private key storage security (client-side) beyond local file encryption.
+- [ ] Add session management (issue secure tokens after login).
+- [ ] Provide real HTTP server endpoints (e.g., using Spring Boot).
+- [ ] Build an Android-compatible client library.
+- [ ] Implement rate limiting and brute force protections.
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -15,7 +27,6 @@ It is designed for developers who require secure, simple, and easily integratabl
   - [Login Flow](#login-flow)
 - [Installation](#installation)
 - [Usage Example](#usage-example)
-- [Future Improvements](#future-improvements)
 - [License](#license)
 
 ## Overview
@@ -134,16 +145,7 @@ mvn clean install
 
 3. Import the modules into your Java project.
 
-## TODO
 
-- [ ] Integrate a real database for persistent user and key storage.
-- [ ] Persist challenges across server restarts.
-- [ ] Implement key rotation and revocation mechanisms.
-- [ ] Improve private key storage security (client-side) beyond local file encryption.
-- [ ] Add session management (issue secure tokens after login).
-- [ ] Provide real HTTP server endpoints (e.g., using Spring Boot).
-- [ ] Build an Android-compatible client library.
-- [ ] Implement rate limiting and brute force protections.
 
 ## Usage Example
 
@@ -169,13 +171,6 @@ AuthServer authServer = new AuthServer(userManager, challengeManager);
 // Call authServer.handleRequest(parsedRequestMap)
 ```
 
-## Future Improvements
-
-- Add database support for production-grade user storage
-- Add session token generation after login
-- Expire old challenges more aggressively
-- Integrate with a real HTTP server (e.g., Spring Boot)
-- Provide Android client library
 
 ## License
 
