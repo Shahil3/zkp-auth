@@ -1,0 +1,36 @@
+2025-05-14 14:08:48 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:08:49 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:28:55 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:28:55 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:34:46 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:34:46 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:34:46 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 14:35:15 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:35:15 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:35:16 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 14:35:44 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:35:44 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:35:44 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 14:47:06 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:47:06 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:47:06 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 14:47:20 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 14:47:20 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 14:47:20 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 20:28:45 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 20:28:45 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 20:28:45 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 20:58:57 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 20:58:57 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Keys saved successfully in ~/.zkp-auth/
+2025-05-14 20:58:57 [com.zkp.Main.main()] INFO  com.zkp.client.KeyManager - Successfully loaded KeyPair from ~/.zkp-auth/
+2025-05-14 23:05:36 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - AuthClient Initiallized!
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Sending signUp request to server from client username : john_doe
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.UserManager - username : john_doe registered!
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - User john_doe registered successfully
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Response recieved -> Status : ok
+message : Signup successful
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.ChallengeManager - challenge for john_doe created successfully! challenge is cdiVuMErBTDZUFntR+bHQjrNdrt8NiuuMUO5MLLy3X4=
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - Challenge generated for john_doe
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - Login successful for john_doe
+2025-05-14 23:05:37 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Login successful: Login successful
