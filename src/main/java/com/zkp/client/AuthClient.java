@@ -40,7 +40,7 @@ public class AuthClient {
             logger.error("Response recieved -> Status : " + response.get("status") + "\n" + "message : " + response.get("message"));
             return false;
         }
-
+        
         logger.info("Response recieved -> Status : " + response.get("status") + "\n" + "message : " + response.get("message"));
         // logIn(username);
         return true;

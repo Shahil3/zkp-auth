@@ -64,7 +64,7 @@ public class KeyManager {
         return keyPair.getPrivate();
     }
 
-    public void storeKeyPair(String password) throws Exception {
+    public void storeKeyPair(String username , String password) throws Exception {
         // 1. Derive AES key from password
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 256);
@@ -77,7 +77,7 @@ public class KeyManager {
         byte[] encryptedPrivateKey = cipher.doFinal(this.keyPair.getPrivate().getEncoded());
 
         // 3. Define paths
-        Path directory = Paths.get(System.getProperty("user.home"), ".zkp-auth");
+        Path directory = Paths.get(System.getProperty("user.home"), ".zkp-auth", username);
         if (!Files.exists(directory)) {
             Files.createDirectories(directory);
         }
@@ -102,11 +102,11 @@ public class KeyManager {
             metaOut.write(iv);
         }
 
-        logger.info("Keys saved successfully in ~/.zkp-auth/");
+        logger.info("Keys saved successfully in ~/.zkp-auth/{}/", username);
     }
 
-    public KeyPair loadKeyPair(String password) throws Exception {
-        Path directory = Paths.get(System.getProperty("user.home"), ".zkp-auth");
+    public KeyPair loadKeyPair(String username, String password) throws Exception {
+        Path directory = Paths.get(System.getProperty("user.home"), ".zkp-auth", username);
         Path privateKeyPath = directory.resolve("private.key");
         Path publicKeyPath = directory.resolve("public.key");
         Path metadataPath = directory.resolve("key_metadata");
