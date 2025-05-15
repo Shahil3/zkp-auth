@@ -6,7 +6,6 @@ It is designed for developers who require secure, simple, and easily integratabl
 
 ## TODO
 
-- [ ] Integrate a real database for persistent user and key storage.
 - [ ] Persist challenges across server restarts.
 - [ ] Implement key rotation and revocation mechanisms.
 - [ ] Improve private key storage security (client-side) beyond local file encryption.
