@@ -176,7 +176,7 @@ The diagram below illustrates the Zero Knowledge Proof (ZKP) flow used in the si
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/zkp-auth.git
+git clone https://github.com/Shahil3/zkp-auth.git
 ```
 
 2. Build using Maven:
@@ -242,7 +242,7 @@ Make sure your Spring Boot project includes the zkp-auth library, either via Jit
 </repositories>
 
 <dependency>
-  <groupId>com.github.your-username</groupId>
+  <groupId>com.github.Shahil3</groupId>
   <artifactId>zkp-auth</artifactId>
   <version>main</version>
 </dependency>
