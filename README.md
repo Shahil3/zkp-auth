@@ -15,6 +15,7 @@ It is designed for developers who require secure, simple, and easily integratabl
 
 ## TODO
 
+- [ ] Seperate Client and Server Modules.
 - [ ] Persist challenges across server restarts.
 - [ ] Implement key rotation and revocation mechanisms.
 - [ ] Provide refresh token support.
