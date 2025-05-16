@@ -7,4 +7,5 @@
 /Users/shahil/Downloads/zkp-auth/src/main/java/com/zkp/server/AuthServer.java
 /Users/shahil/Downloads/zkp-auth/src/main/java/com/zkp/server/ChallengeManager.java
 /Users/shahil/Downloads/zkp-auth/src/main/java/com/zkp/server/DatabaseManager.java
+/Users/shahil/Downloads/zkp-auth/src/main/java/com/zkp/server/JwtUtil.java
 /Users/shahil/Downloads/zkp-auth/src/main/java/com/zkp/server/UserManager.java

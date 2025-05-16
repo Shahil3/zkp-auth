@@ -34,6 +34,16 @@ public class TestAuthFlow {
                 boolean loginSuccess = authClient.logIn("john_doe");
                 if (loginSuccess) {
                     System.out.println("Login successful!");
+                    String token = authClient.getSessionToken();
+                    System.out.println("Token received: " + token);
+
+                    // 6. Token-based profile access
+                    boolean profileOk = authClient.getProfile();
+                    if (profileOk) {
+                        System.out.println("Profile retrieved using token!");
+                    } else {
+                        System.out.println("Profile access failed with token.");
+                    }
                 } else {
                     System.out.println("Login failed!");
                 }

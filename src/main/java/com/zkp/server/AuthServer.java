@@ -1,22 +1,27 @@
 package com.zkp.server;
 
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+
+import java.security.Key;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.KeyFactory;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.Base64;
 
 public class AuthServer {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthServer.class);
-
     private final UserManager userManager;
     private final ChallengeManager challengeManager;
+    private final Key jwtSecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final long EXPIRATION_MILLIS = 30 * 60 * 1000; // 30 minutes
 
     public AuthServer(UserManager userManager, ChallengeManager challengeManager) {
         this.userManager = userManager;
@@ -26,15 +31,15 @@ public class AuthServer {
     public Map<String, String> handleRequest(Map<String, String> request) {
         String type = request.get("type");
 
-        if ("signup".equalsIgnoreCase(type)) {
-            return handleSignup(request);
-        } else if ("challenge".equalsIgnoreCase(type)) {
-            return handleChallengeRequest(request);
-        } else if ("login".equalsIgnoreCase(type)) {
-            return handleLoginVerification(request);
-        } else {
-            logger.error("Unknown request type: {}", type);
-            return Map.of("status", "fail", "message", "Unknown request type");
+        switch (type.toLowerCase()) {
+            case "signup": return handleSignup(request);
+            case "challenge": return handleChallengeRequest(request);
+            case "login": return handleLoginVerification(request);
+            case "logout": return handleLogout(request);
+            case "getprofile": return handleProtectedProfile(request);
+            default:
+                logger.error("Unknown request type: {}", type);
+                return Map.of("status", "fail", "message", "Unknown request type");
         }
     }
 
@@ -108,7 +113,8 @@ public class AuthServer {
 
             if (verifier.verify(signedChallengeBytes)) {
                 logger.info("Login successful for {}", username);
-                return Map.of("status", "ok", "message", "Login successful");
+                String token = generateJwtToken(username);
+                return Map.of("status", "ok", "message", "Login successful", "token", token);
             } else {
                 logger.warn("Invalid signature during login attempt for {}", username);
                 return Map.of("status", "fail", "message", "Invalid signature");
@@ -117,5 +123,52 @@ public class AuthServer {
             logger.error("Error during login verification", e);
             return Map.of("status", "fail", "message", "Login error: " + e.getMessage());
         }
+    }
+
+    private Map<String, String> handleLogout(Map<String, String> request) {
+        String token = request.get("token");
+        if (!isTokenValid(token)) {
+            return Map.of("status", "fail", "message", "Invalid or expired token");
+        }
+        String username = getUsernameFromToken(token);
+        logger.info("User {} logged out (client-side only)", username);
+        return Map.of("status", "ok", "message", "Logged out successfully");
+    }
+
+    private Map<String, String> handleProtectedProfile(Map<String, String> request) {
+        String token = request.get("token");
+        if (!isTokenValid(token)) {
+            return Map.of("status", "fail", "message", "Unauthorized");
+        }
+        String username = getUsernameFromToken(token);
+        logger.info("Profile access granted to {}", username);
+        return Map.of("status", "ok", "username", username);
+    }
+
+    private String generateJwtToken(String username) {
+        return Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
+                .signWith(jwtSecretKey)
+                .compact();
+    }
+
+    private boolean isTokenValid(String token) {
+        try {
+            Jwts.parserBuilder().setSigningKey(jwtSecretKey).build().parseClaimsJws(token);
+            return true;
+        } catch (JwtException e) {
+            return false;
+        }
+    }
+
+    private String getUsernameFromToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(jwtSecretKey)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 }

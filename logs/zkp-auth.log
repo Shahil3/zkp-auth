@@ -417,3 +417,57 @@ message : Signup successful
 2025-05-15 13:46:05 [com.zkp.TestAuthFlow.main()] WARN  com.zkp.server.AuthServer - Signup attempt with already registered username: john_doe
 2025-05-15 13:46:05 [com.zkp.TestAuthFlow.main()] ERROR com.zkp.client.AuthClient - Response recieved -> Status : fail
 message : Username already registered
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - AuthClient Initialized!
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Sending signup request to server for username: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] WARN  com.zkp.server.DatabaseManager - Username not found: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - New user added: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.UserManager - Username 'john_doe' registered successfully!
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - User john_doe registered successfully
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Signup successful: Signup successful
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.ChallengeManager - challenge for john_doe created successfully! challenge is QK0padYvw5v8sseNUtabBGTR6Mb+Q+fz2qbLeyzm9/k=
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - Challenge generated for john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - Login successful for john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Login successful. Token received.
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.AuthServer - Profile access granted to john_doe
+2025-05-16 13:07:21 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - User profile retrieved: username = john_doe
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - AuthClient Initialized!
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Sending signup request to server for username: john_doe
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] WARN  com.zkp.server.AuthServer - Signup attempt with already registered username: john_doe
+2025-05-16 13:10:13 [com.zkp.TestAuthFlow.main()] ERROR com.zkp.client.AuthClient - Signup failed: Username already registered
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.KeyManager - Successfully generated keypair.
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - AuthClient Initialized!
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.client.AuthClient - Sending signup request to server for username: john_doe
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/zkpdb
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] INFO  com.zkp.server.DatabaseManager - Database connection closed.
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] WARN  com.zkp.server.AuthServer - Signup attempt with already registered username: john_doe
+2025-05-16 13:52:55 [com.zkp.TestAuthFlow.main()] ERROR com.zkp.client.AuthClient - Signup failed: Username already registered

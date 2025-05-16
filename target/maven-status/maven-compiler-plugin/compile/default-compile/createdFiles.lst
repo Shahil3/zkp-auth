@@ -1,6 +1,4 @@
 com/zkp/TestAuthFlow.class
-com/zkp/client/AuthClient.class
-com/zkp/server/UserManager.class
 com/zkp/server/ChallengeManager$ChallengeWithTimestamp.class
 com/zkp/server/AuthServer.class
 com/zkp/client/KeyManager.class
@@ -8,4 +6,7 @@ com/zkp/server/DatabaseManager.class
 com/zkp/server/ChallengeManager.class
 com/zkp/client/NetworkClient.class
 com/zkp/client/CryptoUtils.class
+com/zkp/server/JwtUtil.class
+com/zkp/client/AuthClient.class
+com/zkp/server/UserManager.class
 com/zkp/client/FakeNetworkClient.class
