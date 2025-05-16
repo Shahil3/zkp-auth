@@ -1,0 +1,18 @@
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.client.KeyManager - Successfully generated keypair.
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.client.AuthClient - AuthClient Initialized!
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.client.AuthClient - Sending signup request to server for username: john_doe
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/authlitedb
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Database connection closed.
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] WARN  com.authlite.server.AuthServer - Signup attempt with already registered username: john_doe
+2025-05-16 15:13:25 [com.authlite.TestAuthFlow.main()] ERROR com.authlite.client.AuthClient - Signup failed: Username already registered
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.client.KeyManager - Successfully generated keypair.
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.client.AuthClient - AuthClient Initialized!
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.client.AuthClient - Sending signup request to server for username: john_doe
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Connected to database: jdbc:postgresql://localhost:5432/authlitedb
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Users table verified/created successfully.
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Public key retrieved for username: john_doe
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] INFO  com.authlite.server.DatabaseManager - Database connection closed.
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] WARN  com.authlite.server.AuthServer - Signup attempt with already registered username: john_doe
+2025-05-16 15:23:16 [com.authlite.TestAuthFlow.main()] ERROR com.authlite.client.AuthClient - Signup failed: Username already registered

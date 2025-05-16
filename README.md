@@ -1,12 +1,12 @@
-# zkp-auth
+# authlite
 
-zkp-auth is a lightweight, modular authentication system based on **Zero Knowledge Proof** principles, providing secure, passwordless user authentication using public key cryptography.
+authlite is a lightweight, modular authentication system that enables secure, passwordless user login using public-key cryptography and challenge-response signatures.
 
 It is designed for developers who require secure, simple, and easily integratable authentication mechanisms in Java-based applications.
 
 ## Features
 
-- Passwordless login using Zero Knowledge Proof (ZKP)
+- Passwordless login using ECDSA-based challenge-response
 - Public key-based signup and verification
 - Stateless JWT token-based authentication
 - Testable with a fake in-memory server (no real HTTP setup required)
@@ -40,9 +40,9 @@ It is designed for developers who require secure, simple, and easily integratabl
 
 ## Overview
 
-zkp-auth allows authentication without passwords.  
-It leverages public-private key cryptography where users prove their identity without ever transmitting their private keys.  
-The system uses a simple challenge-response mechanism for login, ensuring secure user verification based on Zero Knowledge Proof principles.
+authlite provides a passwordless authentication mechanism using digital signatures.  
+It relies on public-private key cryptography and a challenge-response protocol to securely verify user identity.  
+While inspired by zero-knowledge ideas, it does not implement formal ZKPs.
 
 ## Architecture
 
@@ -60,14 +60,14 @@ The system uses a simple challenge-response mechanism for login, ensuring secure
 ## Current Project Structure
 
 ```
-/zkp-auth/
+/authlite/
 ├── logs/
-│   └── zkp-auth.log
+│   └── authlite.log
 ├── src/
 │   └── main/
 │       └── java/
 │           └── com/
-│               └── zkp/
+│               └── authlite/
 │                   ├── client/
 │                   │   ├── AuthClient.java
 │                   │   ├── CryptoUtils.java
@@ -91,9 +91,9 @@ The system uses a simple challenge-response mechanism for login, ensuring secure
 ## Final Expected Structure
 
 ```
-/zkp-auth/
+/authlite/
 ├── client/
-│   ├── src/main/java/com/zkp/client/
+│   ├── src/main/java/com/authlite/client/
 │   │   ├── AuthClient.java
 │   │   ├── CryptoUtils.java
 │   │   ├── KeyManager.java
@@ -102,7 +102,7 @@ The system uses a simple challenge-response mechanism for login, ensuring secure
 │   ├── src/test/java/
 │   └── pom.xml
 ├── server/
-│   ├── src/main/java/com/zkp/server/
+│   ├── src/main/java/com/authlite/server/
 │   │   ├── AuthServer.java
 │   │   ├── ChallengeManager.java
 │   │   ├── DatabaseManager.java
@@ -131,12 +131,11 @@ This separation will allow for independent building, publishing, and usage of th
 
 ## How It Works
 
-The diagram below illustrates the Zero Knowledge Proof (ZKP) flow used in the signup and login process.
+The diagram below illustrates the challenge-response based authentication flow used during signup and login. This is not a formal Zero Knowledge Proof (ZKP), but a secure signature-based protocol using ECDSA keys.
 
-![ZKP Flow](./assets/zkp-flow.png)
-
-![ZKP Authentication Flow](./assets/zkp-auth-flow-diagram.png)
-*A visual sequence showing client-server message exchange using Zero Knowledge Proof during signup and login*
+![Challenge-Response Auth Flow](./assets/authlite-flow-diagram.png) 
+![Challenge-Response Auth Flow2](./assets/authlite-flow.png)  
+*A visual sequence showing client-server message exchange using public-key cryptography and digital signatures for passwordless authentication*
 
 ### Signup Flow
 
@@ -177,13 +176,13 @@ The diagram below illustrates the Zero Knowledge Proof (ZKP) flow used in the si
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Shahil3/zkp-auth.git
+git clone https://github.com/Shahil3/authlite.git
 ```
 
 2. Build using Maven:
 
 ```bash
-cd zkp-auth
+cd authlite
 mvn clean install
 ```
 
@@ -201,7 +200,7 @@ AuthClient authClient = new AuthClient(keyManager, networkClient, "https://yours
 // Register a new user
 authClient.signup("your_username");
 
-// Log in using Zero Knowledge Proof (ZKP) challenge-response
+// Log 
 authClient.logIn("your_username");
 
 // Retrieve token after successful login
@@ -225,11 +224,11 @@ Map<String, String> response = authServer.handleRequest(request);
 
 ## Spring Boot Integration
 
-You can easily integrate the zkp-auth library into a Spring Boot project by exposing the `AuthServer` logic as an HTTP endpoint.
+You can easily integrate the authlite library into a Spring Boot project by exposing the `AuthServer` logic as an HTTP endpoint.
 
 ### 1. Add Dependencies
 
-Make sure your Spring Boot project includes the zkp-auth library, either via JitPack or as a local JAR:
+Make sure your Spring Boot project includes the authlite library, either via JitPack or as a local JAR:
 
 <details>
 <summary>Example using JitPack</summary>
@@ -244,7 +243,7 @@ Make sure your Spring Boot project includes the zkp-auth library, either via Jit
 
 <dependency>
   <groupId>com.github.Shahil3</groupId>
-  <artifactId>zkp-auth</artifactId>
+  <artifactId>authlite</artifactId>
   <version>main</version>
 </dependency>
 ```
@@ -261,11 +260,11 @@ public class AuthController {
     private final AuthServer authServer;
 
     public AuthController(
-        @Value("${zkp.db.host}") String dbHost,
-        @Value("${zkp.db.port}") int dbPort,
-        @Value("${zkp.db.name}") String dbName,
-        @Value("${zkp.db.user}") String dbUser,
-        @Value("${zkp.db.password}") String dbPassword
+        @Value("${auth.db.host}") String dbHost,
+        @Value("${auth.db.port}") int dbPort,
+        @Value("${auth.db.name}") String dbName,
+        @Value("${auth.db.user}") String dbUser,
+        @Value("${auth.db.password}") String dbPassword
     ) {
         UserManager userManager = new UserManager(dbHost, dbPort, dbName, dbUser, dbPassword);
         ChallengeManager challengeManager = new ChallengeManager(userManager);
@@ -283,11 +282,11 @@ public class AuthController {
 ### 3. Configure Your Application Properties
 
 ```properties
-zkp.db.host=localhost
-zkp.db.port=5432
-zkp.db.name=zkpdb
-zkp.db.user=youruser
-zkp.db.password=yourpassword
+auth.db.host=localhost
+auth.db.port=5432
+auth.db.name=authlitedb
+auth.db.user=youruser
+auth.db.password=yourpassword
 ```
 
 ### 4. Access from Client
@@ -304,7 +303,7 @@ The client and server are now connected over real HTTP.
 
 ## Token-Based Authentication
 
-zkp-auth issues a JWT (JSON Web Token) after a successful login using the ZKP challenge-response method. This token:
+authlite issues a JWT (JSON Web Token) after a successful login using challenge-response signature authentication. This token:
 
 - Encodes the user's identity and expiration time.
 - Is cryptographically signed using a secret key.
@@ -331,4 +330,4 @@ Authorization: Bearer <token>
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache License 2.0.
